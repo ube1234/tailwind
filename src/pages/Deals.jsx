@@ -109,7 +109,7 @@ function Deals() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-red-600 to-orange-500 rounded-2xl p-8 mb-12 text-white">
@@ -142,9 +142,9 @@ function Deals() {
 
         {/* Additional Deals Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">More Deals</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">More Deals</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl group">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl group">
               <div className="relative h-48">
                 <img
                   src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800"
@@ -161,7 +161,7 @@ function Deals() {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl group">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl group">
               <div className="relative h-48">
                 <img
                   src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=800"

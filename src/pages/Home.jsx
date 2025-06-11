@@ -101,9 +101,9 @@ function Home() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
       {/* Hero Section - First thing customers see */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -131,13 +131,13 @@ function Home() {
       </div>
 
       {/* Flash Deals Section - Urgency and value */}
-      <div className="bg-red-50 py-16">
+      <div className="bg-red-50 dark:bg-red-900/20 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-red-900 mb-4">
+            <h2 className="text-3xl font-bold text-red-900 dark:text-red-400 mb-4">
               Flash Deals
             </h2>
-            <p className="text-red-600">
+            <p className="text-red-600 dark:text-red-300">
               Limited time offers - Don't miss out!
             </p>
           </div>
@@ -145,7 +145,7 @@ function Home() {
             {featuredProducts.slice(0, 4).map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
               >
                 <div className="relative">
                   <img
@@ -160,13 +160,13 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <span className="text-sm text-blue-600 font-semibold">
+                  <span className="text-sm text-blue-600 dark:text-blue-400 font-semibold">
                     {product.category}
                   </span>
-                  <h3 className="text-lg font-semibold text-gray-900 mt-2">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mt-2">
                     {product.name}
                   </h3>
-                  <p className="text-xl font-bold text-red-600 mt-2">
+                  <p className="text-xl font-bold text-red-600 dark:text-red-400 mt-2">
                     ${product.price}
                   </p>
                   <button className="w-full mt-4 bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors">
@@ -180,96 +180,233 @@ function Home() {
       </div>
 
       {/* Categories Preview Section */}
-      <div className="bg-gray-50 py-16">
+      <div className="bg-white dark:bg-gray-800 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Shop by Category
             </h2>
-            <p className="text-gray-600">
-              Browse our wide range of products
+            <p className="text-gray-600 dark:text-gray-300">
+              Browse our wide range of products by category
             </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                name: 'Electronics',
-                image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800',
-                count: '156 Products'
-              },
-              {
-                name: 'Clothing',
-                image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800',
-                count: '243 Products'
-              },
-              {
-                name: 'Books',
-                image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800',
-                count: '89 Products'
-              },
-              {
-                name: 'Home & Kitchen',
-                image: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800',
-                count: '178 Products'
-              }
-            ].map((category) => (
-              <Link
-                key={category.name}
-                to={`/categories?category=${category.name.toLowerCase()}`}
-                className="group"
-              >
-                <div className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                  <div className="relative h-64">
-                    <img
-                      src={category.image}
-                      alt={category.name}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-2xl font-bold mb-2">
-                        {category.name}
-                      </h3>
-                      <p className="text-sm opacity-90 mb-4">
-                        {category.count}
-                      </p>
-                      <span className="inline-flex items-center text-sm font-medium group-hover:translate-x-2 transition-transform">
-                        Shop Now →
-                      </span>
-                    </div>
-                  </div>
+            {/* Electronics Category */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+              <div className="aspect-w-16 aspect-h-9">
+                <img
+                  src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=800&auto=format&fit=crop&q=80"
+                  alt="Electronics"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://placehold.co/800x450/1e40af/ffffff?text=Electronics";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-300 transition-colors">
+                  Electronics
+                </h3>
+                <p className="text-sm text-gray-200 mb-4">Latest gadgets and devices</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm">24 Products</span>
+                  <a
+                    href="/products?category=electronics"
+                    className="inline-flex items-center text-sm font-medium text-blue-300 hover:text-blue-200 transition-colors"
+                  >
+                    Shop Now
+                    <svg
+                      className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </a>
                 </div>
-              </Link>
-            ))}
+              </div>
+            </div>
+
+            {/* Clothing Category */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+              <div className="aspect-w-16 aspect-h-9">
+                <img
+                  src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&auto=format&fit=crop&q=80"
+                  alt="Clothing"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://placehold.co/800x450/7c3aed/ffffff?text=Clothing";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-300 transition-colors">
+                  Clothing
+                </h3>
+                <p className="text-sm text-gray-200 mb-4">Trendy fashion and accessories</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm">36 Products</span>
+                  <a
+                    href="/products?category=clothing"
+                    className="inline-flex items-center text-sm font-medium text-blue-300 hover:text-blue-200 transition-colors"
+                  >
+                    Shop Now
+                    <svg
+                      className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Books Category */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+              <div className="aspect-w-16 aspect-h-9">
+                <img
+                  src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&auto=format&fit=crop&q=80"
+                  alt="Books"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://placehold.co/800x450/059669/ffffff?text=Books";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-300 transition-colors">
+                  Books
+                </h3>
+                <p className="text-sm text-gray-200 mb-4">Best-selling books and more</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm">42 Products</span>
+                  <a
+                    href="/products?category=books"
+                    className="inline-flex items-center text-sm font-medium text-blue-300 hover:text-blue-200 transition-colors"
+                  >
+                    Shop Now
+                    <svg
+                      className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Home & Kitchen Category */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+              <div className="aspect-w-16 aspect-h-9">
+                <img
+                  src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&auto=format&fit=crop&q=80"
+                  alt="Home & Kitchen"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://placehold.co/800x450/d97706/ffffff?text=Home+%26+Kitchen";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-300 transition-colors">
+                  Home & Kitchen
+                </h3>
+                <p className="text-sm text-gray-200 mb-4">Everything for your home</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm">28 Products</span>
+                  <a
+                    href="/products?category=home"
+                    className="inline-flex items-center text-sm font-medium text-blue-300 hover:text-blue-200 transition-colors"
+                  >
+                    Shop Now
+                    <svg
+                      className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
+
           <div className="text-center mt-12">
-            <Link
-              to="/categories"
+            <a
+              href="/categories"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
             >
               View All Categories
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg
+                className="ml-2 w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
 
       {/* Features Section - Build trust */}
-      <div className="bg-gray-50 py-16">
+      <div className="bg-gray-50 dark:bg-gray-800 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature) => (
               <div
                 key={feature.id}
-                className="text-center p-6 rounded-xl bg-white hover:bg-gray-50 transition-colors shadow-sm"
+                className="text-center p-6 rounded-xl bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors shadow-sm"
               >
-                <div className="text-blue-600 mb-4 flex justify-center">
+                <div className="text-blue-600 dark:text-blue-400 mb-4 flex justify-center">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -277,13 +414,13 @@ function Home() {
       </div>
 
       {/* Testimonials Section - Social proof */}
-      <div className="bg-white py-16">
+      <div className="bg-white dark:bg-gray-900 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               What Our Customers Say
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               Join thousands of satisfied customers
             </p>
           </div>
@@ -291,7 +428,7 @@ function Home() {
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-gray-50 p-8 rounded-xl"
+                className="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl"
               >
                 <div className="flex items-center mb-6">
                   <img
@@ -300,15 +437,15 @@ function Home() {
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div className="ml-4">
-                    <h4 className="font-semibold text-gray-900">
+                    <h4 className="font-semibold text-gray-900 dark:text-white">
                       {testimonial.name}
                     </h4>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
                       {testimonial.role}
                     </p>
                   </div>
                 </div>
-                <p className="text-gray-600 italic">
+                <p className="text-gray-600 dark:text-gray-300 italic">
                   "{testimonial.text}"
                 </p>
               </div>
@@ -318,7 +455,7 @@ function Home() {
       </div>
 
       {/* Newsletter Section - Lead capture */}
-     
+      
     </div>
   );
 }

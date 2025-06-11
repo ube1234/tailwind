@@ -28,7 +28,7 @@ function Categories() {
       id: 'home',
       name: 'Home & Kitchen',
       description: 'Everything for your home',
-      image: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800',
+      image: 'https://images.unsplash.com/photo-1583241475880-683d3a4bc7d3?w=800&auto=format&fit=crop&q=80',
       count: 178
     },
     {
@@ -48,12 +48,12 @@ function Categories() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Shop by Category</h1>
-          <p className="text-xl text-gray-600">Browse our wide range of products by category</p>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Shop by Category</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300">Browse our wide range of products by category</p>
         </div>
 
         {/* Categories Grid */}
@@ -64,7 +64,7 @@ function Categories() {
               to={`/products?category=${category.id}`}
               className="group"
             >
-              <div className="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 <div className="relative h-64">
                   <img
                     src={category.image}
@@ -92,14 +92,14 @@ function Categories() {
 
         {/* Featured Brands Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Brands</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Featured Brands</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {['Nike', 'Apple', 'Samsung', 'Adidas'].map((brand) => (
               <div
                 key={brand}
-                className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="text-2xl font-bold text-gray-800">{brand}</div>
+                <div className="text-2xl font-bold text-gray-800 dark:text-white">{brand}</div>
               </div>
             ))}
           </div>
