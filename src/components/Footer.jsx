@@ -1,25 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Newsletter from './Newsletter';
 
 function Footer() {
+
+
+
   return (
     <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
       {/* Newsletter Section */}
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 border-b border-gray-700">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-          <p className="text-gray-400 mb-6">Subscribe to our newsletter for the latest updates and offers</p>
-          <div className="max-w-md mx-auto flex gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-              Subscribe
-            </button>
-          </div>
-        </div>
+        <Newsletter 
+          title="Stay Updated"
+          subtitle="Subscribe to our newsletter for the latest updates and offers"
+          buttonText="Subscribe"
+          variant="dark"
+        />
       </div>
 
       {/* Main Footer Content */}

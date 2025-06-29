@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import Categories from './pages/Categories';
 import Deals from './pages/Deals';
+import Contact from './pages/Contact';
 import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/deals" element={<Deals />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
           <Footer />
